@@ -1,7 +1,7 @@
 public class Comida extends Producto{
     private boolean esCaliente;
 
-    public Comida(String nombre, double precio, String categoria, boolean esCaliente){
+    public Comida(String nombre, double precio, boolean esCaliente, String categoria){
         super(nombre, precio, categoria);
         this.esCaliente = esCaliente;
     }
@@ -22,5 +22,10 @@ public class Comida extends Producto{
         sb.append(", precio=").append(precio);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public String mostrarInformacion() {
+        return "Nombre comida: " + nombre + " - Es caliente: " + esCaliente + " - Categoria: " + categoria + " - Precio: " + precio + "€";
     }
 }

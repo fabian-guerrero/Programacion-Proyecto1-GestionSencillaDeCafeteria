@@ -1,7 +1,7 @@
 public class Producto {
     protected String nombre;
     protected double precio;
-    private String categoria;
+    protected String categoria;
 
     public Producto(String nombre, double precio, String categoria) {
         this.nombre = nombre;
@@ -41,5 +41,9 @@ public class Producto {
         sb.append(", categoria='").append(categoria).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public String mostrarInformacion() {
+        return "Nombre producto: " + nombre + " - Categoria: " + categoria + " - Precio: " + precio + "€";
     }
 }

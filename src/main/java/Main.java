@@ -9,6 +9,9 @@ public class Main {
     private static Camarero[] camareros = new Camarero[10];
     private static int numCamareros = 0;
 
+    private static Producto[] productos = new Producto[20];
+    private static int numProductos = 0;
+
     public static void main(String[] args) {
 
         int opcion;
@@ -18,6 +21,7 @@ public class Main {
             System.out.println("==== CAFETERIA ====");
             System.out.println("1. Crear cliente");
             System.out.println("2. Crear camarero");
+            System.out.println("3. Crear producto");
             System.out.println("0. Salir \n");
 
             System.out.print("Seleccione una opción: ");
@@ -75,6 +79,70 @@ public class Main {
                     //}
 
                     break;
+
+                // =============================
+                // CREAR PRODUCTO
+                // =============================
+                case 3:
+                    System.out.println();
+                    System.out.println("--- NUEVO PRODUCTO ---");
+
+                    System.out.print("Nombre del nuevo producto: ");
+                    String nombreProducto = sc.nextLine();
+
+                    System.out.print("Precio del nuevo producto: ");
+                    double precioProducto = sc.nextDouble();
+                    sc.nextLine();
+
+                    System.out.print("Categoria del nuevo producto: ");
+                    String categoriaProducto = sc.nextLine();
+
+                    System.out.print("Tipo (1.Producto, 2.Bebida, 3. Comida): ");
+                    int tipoProducto = sc.nextInt();
+
+                    sc.nextLine();
+
+                    Producto productoNuevo = null;
+
+                    switch (tipoProducto){
+                        case 1:
+                            productoNuevo = new Producto(nombreProducto, precioProducto, categoriaProducto);
+                            break;
+
+                        case 2:
+                            System.out.print("Indique el tamaño del producto (pequeño, mediano o grande): ");
+                            String tamano = sc.nextLine();
+                            productoNuevo = new Bebida(nombreProducto, precioProducto, tamano, categoriaProducto);
+                            break;
+
+                        case 3:
+                            System.out.print("¿Es un producto caliente? (si/no): ");
+                            String caliente = sc.nextLine();
+                            boolean esCaliente = false;
+                            if (caliente.equals("si")){
+                                esCaliente =  true;
+                            }
+
+                            productoNuevo = new Comida(nombreProducto, precioProducto, esCaliente, categoriaProducto);
+                            break;
+
+                        default:
+                            System.out.print("El tipo de producto ingresado no es valido, crearemos un producto de tipo producto");
+                            productoNuevo = new Producto(nombreProducto, precioProducto,categoriaProducto);
+                    }
+
+                    productos[numProductos] = productoNuevo;
+                    numProductos++;
+                    System.out.println("--- PRODUCTO CREADO ---\n"+ productoNuevo.mostrarInformacion());
+
+                    // Descomentar bucle for para verificar la lista de productos creados
+                    for (int i = 0; i < numProductos; i++){
+                        System.out.print(productos[i].mostrarInformacion());
+                        System.out.println();
+                    }
+
+                    break;
+
 
                 // =============================
                 // SALIR
