@@ -136,10 +136,10 @@ public class Main {
                     System.out.println("--- PRODUCTO CREADO ---\n"+ productoNuevo.mostrarInformacion());
 
                     // Descomentar bucle for para verificar la lista de productos creados
-                    for (int i = 0; i < numProductos; i++){
-                        System.out.print(productos[i].mostrarInformacion());
-                        System.out.println();
-                    }
+                    //for (int i = 0; i < numProductos; i++){
+                    //    System.out.print(productos[i].mostrarInformacion());
+                    //    System.out.println();
+                    //}
 
                     break;
 
