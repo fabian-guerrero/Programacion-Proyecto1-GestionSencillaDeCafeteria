@@ -12,6 +12,8 @@ public class Main {
     private static Producto[] productos = new Producto[20];
     private static int numProductos = 0;
 
+    private static Ticket ticketNuevo = null;
+
     public static void main(String[] args) {
 
         int opcion;
@@ -22,6 +24,7 @@ public class Main {
             System.out.println("1. Crear cliente");
             System.out.println("2. Crear camarero");
             System.out.println("3. Crear producto");
+            System.out.println("4. Crear ticket");
             System.out.println("0. Salir \n");
 
             System.out.print("Seleccione una opción: ");
@@ -143,6 +146,56 @@ public class Main {
 
                     break;
 
+                // =============================
+                // CREAR TICKET
+                // =============================
+                case 4:
+                    if (numClientes == 0) {
+                        System.out.println("No hay clientes. Crea uno primero.");
+                        return;
+                    }
+
+                    if (numCamareros == 0) {
+                        System.out.println("No hay camareros. Crea uno primero.");
+                        return;
+                    }
+
+                    System.out.println("\nClientes disponibles:");
+                    for (int i = 0; i < clientes.length; i++) {
+                        if (clientes[i] != null) {
+                            System.out.println((i + 1) + ". " + clientes[i]);
+                        }
+                    }
+
+                    System.out.print("Elige un numero de cliente: ");
+                    int idCliente = sc.nextInt() - 1;
+                    if (idCliente < 0 || idCliente >= numClientes) {
+                        System.out.println("Cliente no válido.");
+                        return;
+                    }
+
+                    System.out.println("\nCamareros disponibles:");
+                    for (int i = 0; i < camareros.length; i++) {
+                        if (camareros[i] != null) {
+                            System.out.println((i + 1) + ". " + camareros[i]);
+                        }
+                    }
+
+                    System.out.print("Elige un numero de camarero: ");
+                    int idCamarero = sc.nextInt() - 1;
+                    if (idCamarero < 0 || idCamarero >= numCamareros) {
+                        System.out.println("Camarero no válido.");
+                        return;
+                    }
+
+                    Cliente cli = clientes[idCliente];
+                    Camarero cam = camareros[idCamarero];
+
+                    ticketNuevo = new Ticket(cli, cam);
+
+                    System.out.println("Ticket creado para el cliente " + cli.getNombre() + " atendido por el camarero " + cam.getNombre());
+
+                    break;
 
                 // =============================
                 // SALIR
