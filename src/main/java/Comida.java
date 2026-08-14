@@ -28,4 +28,9 @@ public class Comida extends Producto{
     public String mostrarInformacion() {
         return "Nombre comida: " + nombre + " - Es caliente: " + esCaliente + " - Categoria: " + categoria + " - Precio: " + precio + "€";
     }
+
+    @Override
+    public String mostrarInformacionTicket() {
+        return nombre + (esCaliente ? " caliente" : " frio") + " - " + precio + " €";
+    }
 }

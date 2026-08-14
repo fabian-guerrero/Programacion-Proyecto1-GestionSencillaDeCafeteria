@@ -25,6 +25,8 @@ public class Main {
             System.out.println("2. Crear camarero");
             System.out.println("3. Crear producto");
             System.out.println("4. Crear ticket");
+            System.out.println("5. Añadir productos al ticket");
+            System.out.println("6. Mostrar ticket");
             System.out.println("0. Salir \n");
 
             System.out.print("Seleccione una opción: ");
@@ -136,7 +138,7 @@ public class Main {
 
                     productos[numProductos] = productoNuevo;
                     numProductos++;
-                    System.out.println("--- PRODUCTO CREADO ---\n"+ productoNuevo.mostrarInformacion());
+                    System.out.println("--- PRODUCTO CREADO ---\n" + productoNuevo.mostrarInformacion());
 
                     // Descomentar bucle for para verificar la lista de productos creados
                     //for (int i = 0; i < numProductos; i++){
@@ -194,6 +196,47 @@ public class Main {
                     ticketNuevo = new Ticket(cli, cam);
 
                     System.out.println("Ticket creado para el cliente " + cli.getNombre() + " atendido por el camarero " + cam.getNombre());
+
+                    break;
+
+                // =============================
+                // AGREGAR PRODUCTO
+                // =============================
+                case 5:
+                    if (numProductos == 0) {
+                        System.out.println("No hay productos creados. Crea uno primero.");
+                        return;
+                    }
+
+                    System.out.println("\nProductos disponibles:");
+                    for (int i = 0; i < productos.length; i++) {
+                        if (productos[i] != null) {
+                            System.out.println((i + 1) + ". " + productos[i].mostrarInformacion());
+                        }
+                    }
+
+                    System.out.print("\nElige el número del producto a añadir: ");
+                    int idProducto = sc.nextInt() - 1;
+
+                    Producto prod = productos[idProducto];
+                    ticketNuevo.agregarProducto(prod);
+                    System.out.println("--- PRODUCTO AÑADIDO ---\n" + prod.mostrarInformacion());
+
+
+                    System.out.println(ticketNuevo);
+
+                    break;
+
+                // =============================
+                // MOSTRAR TICKET
+                // =============================
+                case 6:
+                    if (ticketNuevo == null) {
+                        System.out.println("No hay ticket creado.");
+                        return;
+                    }
+
+                    ticketNuevo.mostrarTicket();
 
                     break;
 

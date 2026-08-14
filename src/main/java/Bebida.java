@@ -28,4 +28,9 @@ public class Bebida extends Producto{
     public String mostrarInformacion(){
         return "Nombre bebida: " + nombre + " - Tamaño: " + tamano + " - Categoria: " + categoria + " - Precio: " + precio + "€";
     }
+
+    @Override
+    public String mostrarInformacionTicket() {
+        return nombre + " " + tamano + " - " + precio + " €";
+    }
 }

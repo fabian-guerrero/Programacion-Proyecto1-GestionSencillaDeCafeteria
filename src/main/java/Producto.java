@@ -46,4 +46,8 @@ public class Producto {
     public String mostrarInformacion() {
         return "Nombre producto: " + nombre + " - Categoria: " + categoria + " - Precio: " + precio + "€";
     }
+
+    public String mostrarInformacionTicket() {
+        return nombre + " - " + precio + " €";
+    }
 }

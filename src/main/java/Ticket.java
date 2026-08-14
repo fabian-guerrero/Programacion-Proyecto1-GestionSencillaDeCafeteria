@@ -33,5 +33,13 @@ public class Ticket {
         double totalTicket = calcularTotal();
 
         System.out.println("\nCAFETERÍA JAVA\n");
+        System.out.println("Cliente: " + cliente.getNombre());
+        System.out.println("Camarero: " + camarero.getNombre() + " - Código: "+ camarero.getCodigoEmpleado() +"\n");
+        System.out.println("Productos:");
+        for (int i = 0; i < numProductos; i++) {
+            System.out.println((i + 1) + ". " + productos[i].mostrarInformacionTicket());
+        }
+
+        System.out.printf("\nTotal: "+ totalTicket  + " €\n");
     }
 }
