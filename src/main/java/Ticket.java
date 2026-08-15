@@ -42,4 +42,11 @@ public class Ticket {
 
         System.out.printf("\nTotal: "+ totalTicket  + " €\n");
     }
+
+    public Producto getProductos(int index) {
+        if( index >= 0 && index < numProductos){
+            return productos[index];
+        }
+        return null;
+    }
 }

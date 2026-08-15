@@ -2,11 +2,22 @@ public class Producto {
     protected String nombre;
     protected double precio;
     protected String categoria;
+    private double precioConDescuento;
+    private double porcentajeDescuento;
 
     public Producto(String nombre, double precio, String categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.categoria = categoria;
+        this.precioConDescuento = 0;
+        this.porcentajeDescuento = 0;
+    }
+
+    public double aplicarDescuento(double porcentaje) {
+        this.porcentajeDescuento = porcentaje;
+        double precioActualizado = precio * (1 - porcentaje / 100);
+        setPrecioConDescuento(precioActualizado);
+        return precioActualizado;
     }
 
     public String getNombre() {
@@ -31,6 +42,22 @@ public class Producto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public double getPrecioConDescuento() {
+        return precioConDescuento;
+    }
+
+    public void setPrecioConDescuento(double precioConDescuento) {
+        this.precioConDescuento = precioConDescuento;
+    }
+
+    public double getPorcentajeDescuento() {
+        return porcentajeDescuento;
+    }
+
+    public void setPorcentajeDescuento(double porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
     }
 
     @Override

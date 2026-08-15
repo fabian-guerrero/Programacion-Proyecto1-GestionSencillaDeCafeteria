@@ -26,7 +26,8 @@ public class Main {
             System.out.println("3. Crear producto");
             System.out.println("4. Crear ticket");
             System.out.println("5. Añadir productos al ticket");
-            System.out.println("6. Mostrar ticket");
+            System.out.println("6. Aplicar descuento");
+            System.out.println("7. Mostrar ticket");
             System.out.println("0. Salir \n");
 
             System.out.print("Seleccione una opción: ");
@@ -228,9 +229,44 @@ public class Main {
                     break;
 
                 // =============================
-                // MOSTRAR TICKET
+                // APLICAR DESCUENTO
                 // =============================
                 case 6:
+                    int cantidad = productos.length;
+                    if (cantidad == 0) {
+                        System.out.println("El ticket no tiene productos.");
+                        return;
+                    }
+
+                    System.out.println("Productos en el ticket:");
+                    for (int i = 0; i < cantidad; i++) {
+                        if (ticketNuevo.getProductos(i) != null) {
+                            System.out.println((i + 1) + ". " + ticketNuevo.getProductos(i).mostrarInformacion());
+                        }
+                    }
+
+                    System.out.print("A que numero de producto aplicas el descuento: ");
+                    int idDescuento = sc.nextInt() - 1;
+                    if (idDescuento < 0 || idDescuento >= cantidad) {
+                        System.out.println("Numero inválido.");
+                        return;
+                    }
+
+                    Producto producto = ticketNuevo.getProductos(idDescuento);
+                    System.out.print("Indica el porcentaje de descuento (solo número, sin '%'): ");
+                    double porcentaje = sc.nextDouble();
+
+                    double precioFinal = producto.aplicarDescuento(porcentaje);
+                    producto.setPrecioConDescuento(precioFinal);
+
+                    System.out.println("Descuento aplicado a " + producto.getNombre() + ". Precio final: " + precioFinal + " €");
+
+                    break;
+
+                // =============================
+                // MOSTRAR TICKET
+                // =============================
+                case 7:
                     if (ticketNuevo == null) {
                         System.out.println("No hay ticket creado.");
                         return;
