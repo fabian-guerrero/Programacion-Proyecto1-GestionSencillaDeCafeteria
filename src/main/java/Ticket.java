@@ -29,6 +29,18 @@ public class Ticket {
         return  total;
     }
 
+    public double calcularTotalFinal(){
+        double total = 0;
+        for (int i = 0; i < numProductos; i++) {
+            if (productos[i].getPorcentajeDescuento() > 0){
+                total += productos[i].getPrecioConDescuento();
+            }else{
+                total += productos[i].getPrecio();
+            }
+        }
+        return total;
+    }
+
     public void mostrarTicket(){
         double totalTicket = calcularTotal();
 
@@ -41,6 +53,26 @@ public class Ticket {
         }
 
         System.out.printf("\nTotal: "+ totalTicket  + " €\n");
+
+        boolean hayDescuentos = false;
+        for (int i = 0; i < numProductos; i++) {
+            if (productos[i].getPorcentajeDescuento() > 0) {
+                hayDescuentos = true;
+                break;
+            }
+        }
+
+        if (hayDescuentos) {
+            for (int i = 0;i < numProductos;i++) {
+                Producto prod = productos[i];
+                if(prod.getPorcentajeDescuento() > 0){
+                    System.out.println("\nDescuento aplicado a "+prod.getNombre() +" "+prod.getPorcentajeDescuento()+"%");
+                    System.out.println("Precio final de " + prod.getNombre() + ": " + prod.getPrecioConDescuento() + "€");
+                }
+            }
+
+            System.out.println("\nTotal Final: " + calcularTotalFinal() + " €");
+        }
     }
 
     public Producto getProductos(int index) {
