@@ -1,4 +1,4 @@
-public class Producto {
+public class Producto implements Descontable{
     protected String nombre;
     protected double precio;
     protected String categoria;
