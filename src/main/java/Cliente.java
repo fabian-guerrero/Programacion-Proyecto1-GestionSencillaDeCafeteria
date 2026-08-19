@@ -1,7 +1,19 @@
+/**
+ * Clase que representa a un cliente de la cafeteria.
+ *
+ * @author FabianGuerrero
+ * @version 1.0
+ */
 public class Cliente {
     private String nombre;
     private String telefono;
 
+    /**
+     * Constructor para crear un cliente con nombre y telefono
+     *
+     * @param nombre    Nombre del cliente
+     * @param telefono  Número de teléfono del cliente
+     */
     public Cliente(String nombre, String telefono){
         this.nombre = nombre;
         this.telefono = telefono;

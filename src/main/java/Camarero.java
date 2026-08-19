@@ -1,7 +1,19 @@
+/**
+ * Clase que representa a un camarero de la cafeteria.
+ *
+ * @author FabianGuerrero
+ * @version 1.0
+ */
 public class Camarero {
     private String nombre;
     private String codigoEmpleado;
 
+    /**
+     * Constructor para crear un camarero de la cafeteria.
+     *
+     * @param nombre            Nombre del camarero
+     * @param codigoEmpleado    Número de código de empleado del camarero
+     */
     public Camarero(String nombre, String codigoEmpleado){
         this.nombre = nombre;
         this.codigoEmpleado = codigoEmpleado;

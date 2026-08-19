@@ -1,3 +1,10 @@
+/**
+ * Clase que representa un ticket de venta de la cafeteria.
+ * Contiene un cliente, un camarero y una lista de productos.
+ *
+ * @author FabianGuerrero
+ * @version 1.0
+ */
 public class Ticket {
     private Cliente cliente;
     private Camarero camarero;
@@ -5,6 +12,11 @@ public class Ticket {
     private final int max_productos = 10;
     private int numProductos;
 
+    /**
+     * Constructor para crear un ticket que debe incluir un cliente y un camarero
+     * @param cliente   Cliente del ticket
+     * @param camarero  Camarero del ticket
+     */
     public Ticket(Cliente cliente, Camarero camarero){
         this.cliente = cliente;
         this.camarero = camarero;
@@ -12,6 +24,11 @@ public class Ticket {
         this.numProductos = 0;
     }
 
+    /**
+     * Agrega productos al ticket si no se ha alcanzado el máximo.
+     * Si se ha alcanzado el máximo muestra por que no se pudo agregar
+     * @param producto  Producto que se va a agregar
+     */
     public void agregarProducto(Producto producto){
         if (numProductos < max_productos){
             productos[numProductos] = producto;
@@ -21,6 +38,10 @@ public class Ticket {
         }
     }
 
+    /**
+     * Calcula el total del ticket de todos los productos sin incluir descuentos
+     * @return La suma de los precios sin descuento
+     */
     public double calcularTotal(){
         double total = 0;
         for (int i = 0; i < numProductos; i++){
@@ -29,6 +50,10 @@ public class Ticket {
         return  total;
     }
 
+    /**
+     * Calcula el total final sumando los precios actualizados con descuento
+     * @return Suma los precios actualizados con descuentos
+     */
     public double calcularTotalFinal(){
         double total = 0;
         for (int i = 0; i < numProductos; i++) {
@@ -41,6 +66,14 @@ public class Ticket {
         return total;
     }
 
+    /**
+     * Muestra por consola el ticket generado incluyendo:
+     * - Cliente y camarero
+     * - Lista de productos con el precio inicial
+     * - Total del ticket con los precios iniciales
+     * - Descuentos aplicados si es que los hay
+     * - Total del ticket con descuentos si los hay
+     */
     public void mostrarTicket(){
         double totalTicket = calcularTotal();
 

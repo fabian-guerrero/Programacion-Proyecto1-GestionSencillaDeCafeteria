@@ -1,5 +1,12 @@
 import java.util.Scanner;
 
+/**
+ * Clase principal que contiene el menú para gestionar la cafetería.
+
+ * @author FabianGuerrero
+ * @version 1.0
+ */
+
 public class Main {
     private static Scanner sc = new Scanner(System.in);
 
