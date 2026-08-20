@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"<Unnamed>","l":"Bebida"},{"p":"<Unnamed>","l":"Camarero"},{"p":"<Unnamed>","l":"Cliente"},{"p":"<Unnamed>","l":"Comida"},{"p":"<Unnamed>","l":"Descontable","k":"10"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"Producto"},{"p":"<Unnamed>","l":"Ticket"}];updateSearchResults();
