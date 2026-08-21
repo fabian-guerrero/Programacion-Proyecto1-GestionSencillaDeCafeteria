@@ -25,7 +25,49 @@ public class Main {
 
     private static Ticket ticketNuevo = null;
 
+    private static void cargarDatosPrueba() {
+        // Crear clientes de prueba
+        Cliente c1 = new Cliente("Ana López", "600123456");
+        Cliente c2 = new Cliente("Juan Pérez", "611987654");
+        Cliente c3 = new Cliente("María García", "622345678");
+        // Añadirlos al array si hay espacio
+
+        // Crear camareros de prueba
+        Camarero cam1 = new Camarero("Carlos", "C01");
+        Camarero cam2 = new Camarero("Laura", "C02");
+
+        // Crear productos de prueba (incluyendo herencia)
+        Producto p1 = new Bebida("Café", 1.80,  "mediano","Bebida");
+        Producto p2 = new Comida("Bocadillo", 3.50,  true,"Comida");
+        Producto p3 = new Bebida("Zumo", 2.20, "grande","Bebida");
+        Producto p4 = new Producto("Galleta", 1.00, "Snack");
+        Producto p5 = new Comida("Ensalada", 4.50,  false,"Comida");
+        Producto p6 = new Bebida("Té", 1.50,  "pequeño","Bebida");
+
+        // Añadir al array de productos disponibles
+        Producto[] temp = {p1, p2, p3, p4, p5, p6};
+        for (Producto p : temp) {
+            if (numProductos < MAX_PRODUCTOS) {
+                productos[numProductos++] = p;
+            }
+        }
+
+        clientes[numClientes++] = c1;
+        clientes[numClientes++] = c2;
+        clientes[numClientes++] = c3;
+
+        camareros[numCamareros++] = cam1;
+        camareros[numCamareros++] = cam2;
+
+        System.out.println("Datos de prueba cargados:");
+        System.out.println("  - Clientes: " + numClientes);
+        System.out.println("  - Camareros: " + numCamareros);
+        System.out.println("  - Productos: " + numProductos);
+    }
+
     public static void main(String[] args) {
+
+        cargarDatosPrueba();
 
         int opcion;
 
@@ -177,7 +219,7 @@ public class Main {
                     System.out.println("\nClientes disponibles:");
                     for (int i = 0; i < clientes.length; i++) {
                         if (clientes[i] != null) {
-                            System.out.println((i + 1) + ". " + clientes[i]);
+                            System.out.println((i + 1) + ". Nombre: " + clientes[i].getNombre() + " - Teléfono: " + clientes[i].getTelefono());
                         }
                     }
 
@@ -191,7 +233,7 @@ public class Main {
                     System.out.println("\nCamareros disponibles:");
                     for (int i = 0; i < camareros.length; i++) {
                         if (camareros[i] != null) {
-                            System.out.println((i + 1) + ". " + camareros[i]);
+                            System.out.println((i + 1) + ". Nombre: " + camareros[i].getNombre() + " - Código Empleado: " + camareros[i].getCodigoEmpleado());
                         }
                     }
 
@@ -233,9 +275,6 @@ public class Main {
                     Producto prod = productos[idProducto];
                     ticketNuevo.agregarProducto(prod);
                     System.out.println("--- PRODUCTO AÑADIDO ---\n" + prod.mostrarInformacion());
-
-
-                    System.out.println(ticketNuevo);
 
                     break;
 
