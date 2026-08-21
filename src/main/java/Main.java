@@ -10,13 +10,17 @@ import java.util.Scanner;
 public class Main {
     private static Scanner sc = new Scanner(System.in);
 
-    private static Cliente[] clientes = new Cliente[10];
+    private static final int MAX_CLIENTES = 10;
+    private static final int MAX_CAMAREROS = 10;
+    private static final int MAX_PRODUCTOS = 20;
+
+    private static Cliente[] clientes = new Cliente[MAX_CLIENTES];
     private static int numClientes = 0;
 
-    private static Camarero[] camareros = new Camarero[10];
+    private static Camarero[] camareros = new Camarero[MAX_CAMAREROS];
     private static int numCamareros = 0;
 
-    private static Producto[] productos = new Producto[20];
+    private static Producto[] productos = new Producto[MAX_PRODUCTOS];
     private static int numProductos = 0;
 
     private static Ticket ticketNuevo = null;
